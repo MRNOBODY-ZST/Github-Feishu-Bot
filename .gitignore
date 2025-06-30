@@ -372,3 +372,4 @@ marimo/_lsp/
 __marimo__/
 
 logs/*
+config.py
