@@ -1,0 +1,25 @@
+[Unit]
+Description=GitHub-Feishu Webhook Bot (Poetry)
+After=network.target
+StartLimitIntervalSec=0
+
+[Service]
+Type=simple
+Restart=always
+RestartSec=3
+User=ubuntu
+Group=ubuntu
+WorkingDirectory=/home/ubuntu/Github-Feishu-Bot
+ExecStart=/home/ubuntu/Github-Feishu-Bot/scripts/start.sh
+ExecReload=/bin/kill -s HUP $MAINPID
+
+# 环境变量
+Environment="PYTHONPATH=/home/ubuntu/Github-Feishu-Bot"
+Environment="PYTHONUNBUFFERED=1"
+
+# 资源限制
+LimitNOFILE=65535
+LimitNPROC=4096
+
+[Install]
+WantedBy=multi-user.target
